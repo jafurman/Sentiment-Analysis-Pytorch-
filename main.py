@@ -55,12 +55,12 @@ data = ["This movie is great", "I didn't like this movie", "Amazing film", "I lo
 # Use continuous sentiment scores: 0 for negative, 1 for positive
 labels = [1.0, 0.0, 1.0, 1.0, 0.0, 1.0]
 
+# Figure out how to get a large CSV file of text optoins... maybe make my own data and train with my own data that I scraped from reddit with my own bias of scores???
+
 # Define your vocabulary
 vocab = {}
 vocabDict = defineVocab(data)
-vocab = {"this": 0, "movie": 1, "is": 2, "great": 3, "i": 4, "didn't": 5, "like": 6, "amazing": 7, "film": 8}
 print(vocabDict)
-print(vocab)
 
 
 # Main function
@@ -80,7 +80,7 @@ def main():
     # Iterate over your own data
     for text, label in zip(data, labels):
         # Convert text to tensor
-        tensor = text_to_tensor(text, vocab)
+        tensor = text_to_tensor(text, vocabDict)
         # Convert label to tensor
         target = torch.tensor(label, dtype=torch.float32)
 
